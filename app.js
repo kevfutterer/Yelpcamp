@@ -20,6 +20,7 @@ const userRoutes = require("./routes/users");
 const mongoSanitize = require("express-mongo-sanitize");
 
 const MongoStore = require("connect-mongo");
+const { prototype } = require("stream");
 // const helmet = require("helmet");
 
 // const dbUrl = process.env.DB_URL;
@@ -115,6 +116,8 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen(3001, () => {
-  console.log("Serving on port 3001");
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log("Serving on port");
 });
